@@ -32,7 +32,6 @@ function createTask(taskTitle){
         title: taskTitle,
         completed: false
     };
-
     tasks.unshift(newTask);
     renderTask();
 }
@@ -52,7 +51,6 @@ function renderTask(){
 
     tasksContainer.innerHTML=htmlTask.join('');
 
-    // element collection
     const startButtons = document.querySelectorAll('.task .task__button--start');
     debugger;
     startButtons.forEach((btn)=>{
@@ -61,9 +59,6 @@ function renderTask(){
                 const id = btn.getAttribute('data-id');
                 startButtonHandler(id);
                 btn.textContent = " In progress ";
-                // btn.setAttribute('disabled','true')
-                btn.removeAttribute("disabled")
-                // document.getElementsByClassName('task__button--start').disabled = true;
             }
         });
     });
@@ -72,15 +67,10 @@ function renderTask(){
 
 // TIMER LOGIC
 function startButtonHandler(id){
-    
-
-    // comment/uncomment
-    // time = 25 * 60;
-    time = 5;
+    time = 25 * 60;
     current = id;
     const taskIndex = tasks.findIndex( task => task.id === id);
     taskName.textContent = tasks[taskIndex].title;
-
     timer = setInterval(() => {
         timeHandler(id);
     }, 1000);
@@ -89,13 +79,11 @@ function startButtonHandler(id){
 function timeHandler(id){
     time--;
     renderTime();
-
     if(time === 0){
         clearInterval(timer);
         markCompleted(id);
         timer = null;
         renderTask()
-        //break
         startBreak();
     }
 }
@@ -104,20 +92,16 @@ function renderTime(){
     const timeDiv = document.getElementById('time-container__value');
     const minutes = parseInt(time / 60);
     const seconds = parseInt ( time % 60);
-
     timeDiv.textContent = `${minutes < 10 ? '0' : ''}${minutes}:${seconds<10?'0':''}${seconds}`
 }
 
 function markCompleted(id){
-    // const taskIndex = tasks.findIndex( task => task.id === id);
-    // tasks[taskIndex].completed = true;
     tasks[tasks.findIndex(task => task.id === id)].completed=true;
 }
 
 function startBreak(){
-    time = 3;
+    time = 5 * 60;
     taskName.textContent = 'Break';
-
     timerBreak = setInterval(() => {
         timeBreakHandler();
     }, 1000);
@@ -128,13 +112,10 @@ function timeBreakHandler(id){
     renderTime();
     if(time === 0){
         clearInterval(timerBreak);
-        // markCompleted(id)
         current = null;
         timerBreak=null;
         taskName.textContent = 'Keep Focus';
-        renderTask();
-        
+        renderTask();  
     }
 }
-
 alert('25 min for each task and 5 min of break as default');

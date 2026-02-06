@@ -1,7 +1,7 @@
 # Pomodoro Task Timer
 
 ---
-
+[Pomodoro 🍅](https://axlgoze.github.io/Pomodoro/)
 
 The Pomodoro Task Timer is a productivity tool designed to help users manage their tasks efficiently using the Pomodoro technique. It allows users to create tasks, track their progress with a countdown timer, and take scheduled breaks to maintain focus. This project aims to simplify task management and improve time management skills.
 
@@ -86,5 +86,7 @@ To ensure stability, run the following command to execute tests:
 ```bash
 # Placeholder for future test commands
 ```
+### About me
 
+[linkedin](https://www.linkedin.com/in/axel-reyes-wd/)
 ---
